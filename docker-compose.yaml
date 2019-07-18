@@ -1,0 +1,41 @@
+version: '2.4'
+
+services:
+  devconnector_cmo:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 4000:4000
+    depends_on:
+      - mongo
+    volumes:
+      - /app/node_modules
+      - ./:/app/:delegated
+    # environment:
+    #   database__client: mysql
+    #   database__connection__host: db
+    #   database__connection__user: root
+    #   database__connection__password: YOURDBPASSWORDhere
+    #   database__connection__database: ghost
+
+  # backend:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile.dev
+  #   ports:
+  #     - 3100:3100
+  #   # depends_on:
+  #   #   - db
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./backend:/app/:delegated
+  mongo:
+    image: mongo:4
+    volumes:
+      #GOOD: created a named volume so our data is kept between docker-compose ups
+      - mongo:/data/db
+    ports:
+      - "27017:27017"
+volumes:
+  mongo:
