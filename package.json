@@ -28,7 +28,7 @@
     "react-apollo": "^2.5.8",
     "react-dom": "^16.8.6",
     "semantic-ui-react": "^0.87.2",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1",
